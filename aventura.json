@@ -1,6 +1,6 @@
 {
   "title": "La mansión del doctor Chiflado",
-  "version": "v0.17",
+  "version": "v0.18",
   "palette": {
     "sofa": "#3a5a9a",
     "sofaL": "#5a7ac0",
@@ -146,10 +146,10 @@
     {"gap": 6},
     {"c": "LÍNEAS DE CÓDIGO Y DATOS", "color": "#9090b0"},
     "MOTOR DEL JUEGO: 1.615",
-    "SCRIPTS DE PYTHON: 1.884",
+    "SCRIPTS DE PYTHON: 1.891",
     "AVENTURA EN JSON: 5.512",
     "PROTOTIPO ORIGINAL: 847",
-    "TOTAL: 9.858",
+    "TOTAL: 9.865",
     {"gap": 6},
     {"c": "Y ADEMÁS", "color": "#9090b0"},
     "8 ESTANCIAS, 88 OBJETOS, 20 GUIONES",

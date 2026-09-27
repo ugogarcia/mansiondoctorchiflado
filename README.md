@@ -15,32 +15,16 @@ Todo el juego está en un solo archivo HTML: gráficos pixel art dibujados por c
 
 Tito ha apostado diez euros a que en la mansión no hay fantasmas… y la puerta se ha cerrado a su espalda. Encuentra la salida, conoce a Paco el cocinero, a Firulais y a los ensayos de la gala del piso de arriba, y consigue todos los puntos de disparate que puedas.
 
-## Archivos del repositorio
+## Archivos
 
-| Archivo | Qué es |
-|---|---|
-| `index.html` | El juego completo, listo para jugar (motor + aventura integrada). |
-| `aventura.json` | La aventura en formato JSON: habitaciones, objetos, diálogos, música… |
-| `motor.html` | El motor del juego sin aventura (plantilla con el hueco `/*GAME_JSON*/`). |
-| `gen.py`, `audio.py`, `story2.py` … `story6.py` | Scripts de Python que generan `aventura.json` por capas. |
-| `aventura_v1.json` | Base de partida que usa `gen.py`. |
-| `sokoban.py`, `search.py` | Utilidades para comprobar que el puzle de las estanterías tiene solución. |
-| `fmt.py`, `build.py` | Formateo del JSON e inserción en `motor.html` para crear `index.html`. |
-| `README.md` | Esta guía. |
-
-### Regenerar el juego
-
-```bash
-python3 gen.py && python3 audio.py && python3 story2.py && python3 story3.py \
-  && python3 story4.py && python3 story5.py && python3 story6.py && python3 build.py
-```
-
-(`gen.py` parte de `aventura_v1.json`.)
+- `index.html`: el juego completo, listo para jugar (también es la página de GitHub Pages).
+- `aventura.json`: la aventura en JSON, por si quieres cargarla en el motor o usarla de ejemplo.
+- `motor.html`: el motor sin aventura, para crear la tuya (ver la guía de abajo).
+- `herramientas/`: los scripts de Python con los que la IA generó `aventura.json` e `index.html`. No hacen falta para jugar. Para regenerarlo todo: `python3 herramientas/generar.py`.
 
 ---
 
 # Guía para crear aventuras en JSON
-
 
 `index.html` es el motor con la aventura integrada. El juego completo (habitaciones, dibujos, objetos, verbos, puzzles e historia) está en un JSON.
 
@@ -597,8 +581,8 @@ Tipos de entrada:
 - `n`: un nombre grande de colores.
 - `gap`: un espacio en píxeles.
 
-`{TIEMPO}`, `{PUNTOS}`, `{MAX}` y `{RANGO}` se sustituyen por los datos de la partida. En esta aventura, `story5.py` cuenta las líneas de código y los objetos cada vez que se regenera el JSON.
+`{TIEMPO}`, `{PUNTOS}`, `{MAX}` y `{RANGO}` se sustituyen por los datos de la partida. En esta aventura, `herramientas/story5.py` cuenta las líneas de código y los objetos cada vez que se regenera el JSON.
 
 ## Versión (`version`)
 
-`"version": "v0.15"` en la raíz del JSON se muestra en pequeño en la esquina inferior derecha de la portada y de las escenas. Sirve para saber si estás viendo la última versión. En esta aventura se cambia en `story6.py` (constante `VERSION`) y sube en 1 con cada iteración.
+`"version": "v0.15"` en la raíz del JSON se muestra en pequeño en la esquina inferior derecha de la portada y de las escenas. Sirve para saber si estás viendo la última versión. En esta aventura se cambia en `herramientas/story6.py` (constante `VERSION`) y sube en 1 con cada iteración.
