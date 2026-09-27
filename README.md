@@ -6,7 +6,7 @@ Todo el juego está en un solo archivo HTML: gráficos pixel art dibujados por c
 
 ## Cómo jugar
 
-1. Descarga `aventura.html` y ábrelo en el navegador (doble clic). No hace falta instalar nada.
+1. Juega online en GitHub Pages: **https://ugogarcia.github.io/mansiondoctorchiflado/** (si tienes Pages activado en el repositorio), o descarga `index.html` y ábrelo en el navegador con doble clic. No hace falta instalar nada.
 2. Haz clic en la portada para activar el sonido y empezar.
 3. Elige un verbo abajo y luego haz clic en un objeto o personaje.
    - Clic en el suelo: andar. Doble clic: llegar al instante.
@@ -19,13 +19,13 @@ Tito ha apostado diez euros a que en la mansión no hay fantasmas… y la puerta
 
 | Archivo | Qué es |
 |---|---|
-| `aventura.html` | El juego completo, listo para jugar (motor + aventura integrada). |
+| `index.html` | El juego completo, listo para jugar (motor + aventura integrada). |
 | `aventura.json` | La aventura en formato JSON: habitaciones, objetos, diálogos, música… |
 | `motor.html` | El motor del juego sin aventura (plantilla con el hueco `/*GAME_JSON*/`). |
 | `gen.py`, `audio.py`, `story2.py` … `story6.py` | Scripts de Python que generan `aventura.json` por capas. |
 | `aventura_v1.json` | Base de partida que usa `gen.py`. |
 | `sokoban.py`, `search.py` | Utilidades para comprobar que el puzle de las estanterías tiene solución. |
-| `fmt.py`, `build.py` | Formateo del JSON e inserción en `motor.html` para crear `aventura.html`. |
+| `fmt.py`, `build.py` | Formateo del JSON e inserción en `motor.html` para crear `index.html`. |
 | `README.md` | Esta guía. |
 
 ### Regenerar el juego
@@ -42,13 +42,13 @@ python3 gen.py && python3 audio.py && python3 story2.py && python3 story3.py \
 # Guía para crear aventuras en JSON
 
 
-`aventura.html` es el motor. El juego completo (habitaciones, dibujos, objetos, verbos, puzzles e historia) está en un JSON.
+`index.html` es el motor con la aventura integrada. El juego completo (habitaciones, dibujos, objetos, verbos, puzzles e historia) está en un JSON.
 
 ## Cómo cargar tu JSON
 
 - **Botón CARGAR JSON** (o arrastrar el `.json` a la ventana): carga tu aventura al momento. Es la forma más cómoda mientras escribes.
-- **Integrado**: pega el JSON dentro de `<script type="application/json" id="game-data">` en `aventura.html`. Así queda un único archivo para compartir.
-- **Por URL** (solo si lo sirves con un servidor web): `aventura.html?juego=mi_aventura.json`.
+- **Integrado**: pega el JSON dentro de `<script type="application/json" id="game-data">` en `index.html`. Así queda un único archivo para compartir.
+- **Por URL** (solo si lo sirves con un servidor web): `index.html?juego=mi_aventura.json`.
 
 Pulsa **D** durante la partida para ver el modo depuración:
 
