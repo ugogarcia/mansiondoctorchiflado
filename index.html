@@ -155,11 +155,11 @@
     "TITO, EL QUE APOSTÓ DIEZ EUROS",
     {"gap": 14},
     {"h": "REPARTO"},
-    "PACO ............. EL COCINERO",
-    "ROSITA ........ LA DE LA PUERTA 2",
+    "PACO ...... COCINERO Y PANDERETERO",
+    "ROSITA ...... INVENTORA Y THEREMINISTA",
     "FIRULAIS ........ EL PERRO",
     "EL DOCTOR CHIFLADO ... BAILARÍN DE TANGO",
-    "EL VECINO DE LA PUERTA 1 ... OCUPADÍSIMO",
+    "EL MAYORDOMO ...... MONITOR DE AERÓBIC",
     "EL MURCIÉLAGO ...... ÉL MISMO",
     {"gap": 26},
     {"h": "GUION, GRÁFICOS, MÚSICA, SONIDO Y CÓDIGO"},
@@ -178,14 +178,14 @@
     {"gap": 6},
     {"c": "LÍNEAS DE CÓDIGO Y DATOS", "color": "#9090b0"},
     "MOTOR DEL JUEGO: 1.614",
-    "SCRIPTS DE PYTHON: 1.831",
-    "AVENTURA EN JSON: 5.414",
+    "SCRIPTS DE PYTHON: 1.843",
+    "AVENTURA EN JSON: 5.512",
     "PROTOTIPO ORIGINAL: 847",
-    "TOTAL: 9.706",
+    "TOTAL: 9.816",
     {"gap": 6},
     {"c": "Y ADEMÁS", "color": "#9090b0"},
     "8 ESTANCIAS, 88 OBJETOS, 20 GUIONES",
-    "7 MELODÍAS Y 61 EFECTOS DE SONIDO",
+    "7 MELODÍAS Y 62 EFECTOS DE SONIDO",
     "1 COCINERO GORDO",
     {"gap": 26},
     {"h": "AGRADECIMIENTOS"},
@@ -406,7 +406,7 @@
       "La llave del portón la lleva Firulais en el collar. Sin comida no deja ni acercarse...",
       "...y aun comiendo, solo obedece a su silbato. Lo guardé en la biblioteca, sección...",
       "Aquí hay una mancha de café. No se lee nada más.",
-      "P.D.: Esta noche no me molesten, estaré ARRIBA muy ocupado.",
+      "P.D.: Esta noche no me molesten, estaré ARRIBA ensayando para la gala.",
       {"set": "sabe_silbato"}
     ],
     "vuelo_murcielago": [
@@ -598,14 +598,14 @@
         "if": "sabe_silbato",
         "then": [
           "¡Perdone! ¿Sabe dónde está el silbato de Firulais?",
-          {"say": "¡¿Mmmf?! ¡Estoy... mmf... OCUPADÍSIMO!", "who": "puerta1"},
-          {"say": "¿El silbato? Biblio... mmmf... ¡ZETA-TRES! ¡ZE-TA-TRES!", "who": "puerta1"},
-          {"say": "¡Y no vuelvas a llamar, que se me enfría el... mmf... el asunto!", "who": "puerta1"},
+          {"say": "¡¿Hup?! ¡Estoy... hup... OCUPADÍSIMO! ¡Y uno, y dos!", "who": "puerta1"},
+          {"say": "¿El silbato? Biblio... hup... ¡ZETA-TRES! ¡ZE-TA-TRES!", "who": "puerta1"},
+          {"say": "¡Y no vuelvas a llamar, que pierdo el ritmo! ¡Y arriba, y abajo!", "who": "puerta1"},
           {"set": "codigo_z3"},
           "¿Zeta-tres? Suena al código de una sección de la biblioteca.",
-          "¡Y esa voz era la del mayordomo!"
+          "¡Y esa voz era la del mayordomo! ¿Haciendo aeróbic a estas horas?"
         ],
-        "else": [{"say": "¡¿Mmmf?! ¡OCUPADO! ¡Muy... mmf... ocupado!", "who": "puerta1"}, "Esa voz me suena... ¿el mayordomo?"]
+        "else": [{"say": "¡¿Hup?! ¡OCUPADO! ¡Ensayando mi número de aeróbic!", "who": "puerta1"}, "Esa voz me suena... ¿el mayordomo?"]
       },
       {"async": [{"wait": 7}, {"state": ["puerta1", "ruido"]}], "name": "ruido_1"}
     ],
@@ -617,22 +617,30 @@
       {
         "if": "cocinero_fuera",
         "then": [
-          {"say": "¡Ocupadísimos! ¡Jiji!", "who": "puerta2"},
-          {"say": "¡Gracias por el recado, chaval!", "who": "puerta2", "voice": "cocinero", "color": "#ffd0a0"}
+          {"say": "¡Ensayando! ¡Ji, ji!", "who": "puerta2"},
+          {
+            "say": "¡Gracias por el recado, chaval! ¡Chin, chin, chin!",
+            "who": "puerta2",
+            "voice": "cocinero",
+            "color": "#ffd0a0"
+          }
         ],
         "else": [
-          {"say": "¡Uy! ¡Qué susto, cariño!", "who": "puerta2"},
+          {"say": "¡Uy! ¡Qué susto!", "who": "puerta2"},
           {
             "if": "sabe_rosita",
             "then": [
               "¿Es usted Rosita?",
-              {"say": "¡La misma! ¿Quién lo pregunta?", "who": "puerta2"},
-              "Paco, el cocinero, suspira por usted.",
-              {"say": "¿Paco? ¡Ay, ese bigote! Dile que suba, que le estoy esperando... ¡jiji!", "who": "puerta2"},
+              {
+                "say": "¡La misma! Inventora oficial de la mansión. Estoy probando mi theremín para la gala.",
+                "who": "puerta2"
+              },
+              "Paco, el cocinero, se muere por tocar la pandereta en la gala.",
+              {"say": "¿Paco? ¡Justo me falta alguien con pandereta! Dile que suba ya, ¡ji, ji!", "who": "puerta2"},
               {"set": "recado_rosita"},
-              "Creo que acabo de hacer de Cupido."
+              "Creo que acabo de fichar a un panderetero."
             ],
-            "else": [{"say": "Si buscas algo, pregúntale al de la puerta 1, que es un ratón de biblioteca. ¡Jiji!", "who": "puerta2"}, "¿Quién será esta?"]
+            "else": [{"say": "Si buscas algo, pregúntale al de la puerta 1, que es un ratón de biblioteca. ¡Ji, ji!", "who": "puerta2"}, "¿Quién será esta?"]
           }
         ]
       },
@@ -765,8 +773,11 @@
       }
     ],
     "cocinero_se_va": [
-      {"say": "¡¿ROSITA?! ¡¿Pregunta por MÍ?!", "who": "cocinero"},
-      {"say": "¡Voy volando! Tú vigílame el cocido... ¡y ni se te ocurra tocar mi nevera!", "who": "cocinero"},
+      {"say": "¡¿ROSITA?! ¡¿Me quiere en la GALA?!", "who": "cocinero"},
+      {
+        "say": "¡Voy volando con mi pandereta! Tú vigílame el cocido... ¡y ni se te ocurra tocar mi nevera!",
+        "who": "cocinero"
+      },
       {"state": ["cocinero", "anda"]},
       {"path": ["cocinero", [[44, 106], [26, 103]], 48]},
       {"sound": "chirrido"},
@@ -780,7 +791,7 @@
     "paco": {
       "options": [
         {
-          "text": "Rosita dice que subas, que te está esperando.",
+          "text": "Rosita dice que subas a la gala con tu pandereta.",
           "if": "recado_rosita",
           "exit": true,
           "do": {"run": "cocinero_se_va"}
@@ -812,9 +823,12 @@
         {
           "text": "¿Dónde está todo el mundo?",
           "do": [
-            {"say": "Arriba, de fiesta. A mí nunca me invitan...", "who": "cocinero"},
-            {"say": "Yo solo tengo ojos para una: Rosita, la doncella de la habitación 2.", "who": "cocinero"},
-            {"say": "Pero no me hace ni caso. Suspiro, suspiro...", "who": "cocinero"},
+            {"say": "Arriba, ensayando para la gala de talentos. A mí nunca me invitan...", "who": "cocinero"},
+            {"say": "¡Y eso que toco la pandereta como nadie! Chin, chin, chin.", "who": "cocinero"},
+            {
+              "say": "La gala la organiza Rosita, la inventora de la habitación 2. Pero me da vergüenza pedírselo...",
+              "who": "cocinero"
+            },
             {"set": "sabe_rosita"}
           ]
         },
@@ -1282,6 +1296,10 @@
           "filter": ["bandpass", 650, null, 4]
         }
       ]
+    },
+    "hup": {
+      "range": 240,
+      "layers": [{"wave": "sawtooth", "freq": 170, "freqEnd": 260, "dur": 0.13, "vol": 0.35, "filter": ["bandpass", 750, null, 4], "repeat": 2, "gap": 0.45}]
     },
     "suspiro": {
       "range": 240,
@@ -2316,51 +2334,51 @@
           "final",
           [
             ["rect", 149, 55, 12, 14, "#0a0814"],
-            ["rect", 150, 56, 10, 12, "#ff70b0"],
-            ["rect", 155, 56, 1, 12, "#6a2040"],
+            ["rect", 150, 56, 10, 12, "#ffd860"],
+            ["rect", 155, 56, 1, 12, "#6a4a20"],
             ["rect", 175, 55, 12, 14, "#0a0814"],
-            ["rect", 176, 56, 10, 12, "#ff70b0"],
-            ["rect", 181, 56, 1, 12, "#6a2040"],
+            ["rect", 176, 56, 10, 12, "#ffd860"],
+            ["rect", 181, 56, 1, 12, "#6a4a20"],
             ["rect", 201, 55, 12, 14, "#0a0814"],
-            ["rect", 202, 56, 10, 12, "#ff70b0"],
-            ["rect", 207, 56, 1, 12, "#6a2040"],
+            ["rect", 202, 56, 10, 12, "#ffd860"],
+            ["rect", 207, 56, 1, 12, "#6a4a20"],
             ["rect", 227, 55, 12, 14, "#0a0814"],
-            ["rect", 228, 56, 10, 12, "#ff70b0"],
-            ["rect", 233, 56, 1, 12, "#6a2040"],
+            ["rect", 228, 56, 10, 12, "#ffd860"],
+            ["rect", 233, 56, 1, 12, "#6a4a20"],
             [
               "frames",
               2.5,
               [
                 [
-                  ["pixels", 152, 50, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}],
-                  ["pixels", 204, 50, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}]
+                  ["pixels", 152, 50, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#60e0ff"}],
+                  ["pixels", 204, 50, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#80ff80"}]
                 ],
                 [
-                  ["pixels", 152, 45, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}],
-                  ["pixels", 204, 45, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}]
+                  ["pixels", 152, 45, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#ff80c0"}],
+                  ["pixels", 204, 45, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#ffe040"}]
                 ],
                 [
-                  ["pixels", 152, 40, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}],
-                  ["pixels", 204, 40, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}]
+                  ["pixels", 152, 40, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#80ff80"}],
+                  ["pixels", 204, 40, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#60e0ff"}]
                 ],
                 [
-                  ["pixels", 178, 50, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}],
-                  ["pixels", 230, 50, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}]
+                  ["pixels", 178, 50, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#ff80c0"}],
+                  ["pixels", 230, 50, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#ffe040"}]
                 ],
                 [
-                  ["pixels", 178, 45, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}],
-                  ["pixels", 230, 45, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}]
+                  ["pixels", 178, 45, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#80ff80"}],
+                  ["pixels", 230, 45, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#60e0ff"}]
                 ],
                 [
-                  ["pixels", 178, 40, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}],
-                  ["pixels", 230, 40, [".X.X.", "XXXXX", ".XXX.", "..X.."], {"X": "#ff5090"}]
+                  ["pixels", 178, 40, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#ffe040"}],
+                  ["pixels", 230, 40, ["..XX", "..X.", "..X.", "XXX.", "XXX."], {"X": "#ff80c0"}]
                 ]
               ]
             ],
-            ["light", 155, 62, 22, "255,90,170", 0.35, 0.3],
-            ["light", 181, 62, 22, "255,90,170", 0.35, 0.3],
-            ["light", 207, 62, 22, "255,90,170", 0.35, 0.3],
-            ["light", 233, 62, 22, "255,90,170", 0.35, 0.3]
+            ["light", 155, 62, 22, "255,210,120", 0.35, 0.3],
+            ["light", 181, 62, 22, "255,210,120", 0.35, 0.3],
+            ["light", 207, 62, 22, "255,210,120", 0.35, 0.3],
+            ["light", 233, 62, 22, "255,210,120", 0.35, 0.3]
           ]
         ],
         ["rect", 176, 88, 28, 32, "#0a0814"],
@@ -2723,79 +2741,152 @@
               "sound": {"name": "tele_estatica", "every": 0.85, "vol": 0.6}
             },
             "canal": {
-              "sound": {"name": ["muelles", "risitas", "ooh"], "every": 1.3, "vol": 0.7},
+              "sound": {"name": ["ooh", "risitas", "muelles"], "every": 1.3, "vol": 0.7},
               "draw": [
                 [
                   "frames",
-                  1.6,
+                  0.9,
                   [
                     [
-                      ["rect", 252, 54, 20, 18, "#c04880"],
-                      ["rect", 254, 60, 3, 9, "#6a3a18"],
-                      ["rect", 256, 64, 14, 3, "#f0f0f0"],
-                      ["rect", 258, 63, 12, 3, "#e02850"],
-                      ["rect", 257, 62, 3, 2, "#ffffff"],
-                      ["rect", 256, 67, 1, 3, "#6a3a18"],
-                      ["rect", 269, 67, 1, 3, "#6a3a18"]
+                      ["rect", 252, 54, 20, 18, "#1a2a5a"],
+                      ["rect", 254, 67, 16, 5, "#6a3a18"],
+                      ["rect", 255, 66, 14, 1, "#8a5228"],
+                      ["circle", 262, 62, 4, "#60d060"],
+                      ["pix", 260, 61, "#000000"],
+                      ["pix", 264, 61, "#000000"],
+                      ["rect", 261, 64, 3, 1, "#206020"],
+                      ["rect", 258, 55, 8, 3, "#ffffff"],
+                      ["circle", 262, 55, 3, "#ffffff"],
+                      ["line", 267, 58, 270, 66, "#c0c0c0"]
                     ],
                     [
-                      ["rect", 252, 54, 20, 18, "#c04880"],
-                      ["rect", 254, 58, 3, 11, "#6a3a18"],
-                      ["rect", 256, 61, 14, 3, "#f0f0f0"],
-                      ["rect", 258, 60, 12, 3, "#e02850"],
-                      ["rect", 257, 59, 3, 2, "#ffffff"],
-                      ["rect", 256, 67, 1, 3, "#6a3a18"],
-                      ["rect", 269, 67, 1, 3, "#6a3a18"],
-                      ["pix", 258, 65, "#ffff80"],
-                      ["pix", 260, 66, "#ffff80"],
-                      ["pix", 262, 65, "#ffff80"],
-                      ["pix", 264, 66, "#ffff80"],
-                      ["pix", 266, 65, "#ffff80"],
-                      ["pix", 268, 66, "#ffff80"]
+                      ["rect", 252, 54, 20, 18, "#1a2a5a"],
+                      ["rect", 254, 67, 16, 5, "#6a3a18"],
+                      ["rect", 255, 66, 14, 1, "#8a5228"],
+                      ["circle", 262, 62, 4, "#60d060"],
+                      ["pix", 260, 61, "#000000"],
+                      ["pix", 264, 61, "#000000"],
+                      ["rect", 261, 64, 3, 2, "#206020"],
+                      ["rect", 258, 55, 8, 3, "#ffffff"],
+                      ["circle", 262, 55, 3, "#ffffff"],
+                      ["line", 265, 58, 262, 66, "#c0c0c0"],
+                      ["pix", 258, 64, "#f0f0a0"],
+                      ["pix", 266, 63, "#f0f0a0"]
                     ],
                     [
-                      ["rect", 252, 54, 20, 18, "#c04880"],
-                      ["rect", 254, 60, 3, 9, "#6a3a18"],
-                      ["rect", 256, 64, 14, 3, "#f0f0f0"],
-                      ["rect", 258, 63, 12, 3, "#e02850"],
-                      ["rect", 257, 62, 3, 2, "#ffffff"],
-                      ["rect", 256, 67, 1, 3, "#6a3a18"],
-                      ["rect", 269, 67, 1, 3, "#6a3a18"]
+                      ["rect", 252, 54, 20, 18, "#1a2a5a"],
+                      ["rect", 254, 67, 16, 5, "#6a3a18"],
+                      ["rect", 255, 66, 14, 1, "#8a5228"],
+                      ["circle", 262, 62, 4, "#60d060"],
+                      ["pix", 260, 61, "#000000"],
+                      ["pix", 264, 61, "#000000"],
+                      ["rect", 261, 64, 3, 1, "#206020"],
+                      ["rect", 258, 55, 8, 3, "#ffffff"],
+                      ["circle", 262, 55, 3, "#ffffff"],
+                      ["line", 267, 58, 270, 66, "#c0c0c0"]
                     ],
                     [
-                      ["rect", 252, 54, 20, 18, "#c04880"],
-                      ["rect", 254, 58, 3, 11, "#6a3a18"],
-                      ["rect", 256, 61, 14, 3, "#f0f0f0"],
-                      ["rect", 258, 60, 12, 3, "#e02850"],
-                      ["rect", 257, 59, 3, 2, "#ffffff"],
-                      ["rect", 256, 67, 1, 3, "#6a3a18"],
-                      ["rect", 269, 67, 1, 3, "#6a3a18"],
-                      ["pix", 258, 65, "#ffff80"],
-                      ["pix", 260, 66, "#ffff80"],
-                      ["pix", 262, 65, "#ffff80"],
-                      ["pix", 264, 66, "#ffff80"],
-                      ["pix", 266, 65, "#ffff80"],
-                      ["pix", 268, 66, "#ffff80"]
+                      ["rect", 252, 54, 20, 18, "#1a2a5a"],
+                      ["rect", 254, 67, 16, 5, "#6a3a18"],
+                      ["rect", 255, 66, 14, 1, "#8a5228"],
+                      ["circle", 262, 62, 4, "#60d060"],
+                      ["pix", 260, 61, "#000000"],
+                      ["pix", 264, 61, "#000000"],
+                      ["rect", 261, 64, 3, 2, "#206020"],
+                      ["rect", 258, 55, 8, 3, "#ffffff"],
+                      ["circle", 262, 55, 3, "#ffffff"],
+                      ["line", 265, 58, 262, 66, "#c0c0c0"],
+                      ["pix", 258, 64, "#f0f0a0"],
+                      ["pix", 266, 63, "#f0f0a0"]
                     ],
                     [
-                      ["rect", 252, 54, 20, 18, "#401030"],
-                      ["circle", 259, 60, 3, "#ff3060"],
-                      ["circle", 265, 60, 3, "#ff3060"],
-                      ["poly", [[256, 61], [268, 61], [262, 68]], "#ff3060"],
-                      ["pix", 258, 59, "#ffb0c0"]
+                      ["rect", 252, 54, 20, 18, "#60a0e0"],
+                      ["rect", 253, 57, 5, 2, "#ffffff"],
+                      ["rect", 266, 68, 4, 2, "#ffffff"],
+                      ["rect", 256, 63, 14, 3, "#b0b0c0"],
+                      ["rect", 261, 60, 3, 9, "#9090a0"],
+                      ["rect", 256, 61, 2, 2, "#9090a0"],
+                      ["circle", 265, 62, 2, "#f0a040"],
+                      ["pix", 264, 59, "#f0a040"],
+                      ["pix", 267, 59, "#f0a040"],
+                      ["pix", 265, 62, "#000000"]
                     ],
                     [
-                      ["rect", 252, 54, 20, 18, "#101848"],
-                      ["line", 265, 56, 265, 66, "#e0b040"],
-                      ["line", 265, 66, 261, 69, "#e0b040"],
-                      ["rect", 258, 66, 3, 3, "#e0b040"],
-                      ["pix", 264, 59, "#fff0a0"],
-                      ["pix", 264, 62, "#fff0a0"],
-                      ["rect", 268, 57, 1, 4, "#ffffff"],
-                      ["rect", 268, 57, 2, 1, "#ffffff"],
-                      ["pix", 267, 60, "#ffffff"]
+                      ["rect", 252, 54, 20, 18, "#60a0e0"],
+                      ["rect", 256, 57, 5, 2, "#ffffff"],
+                      ["rect", 262, 68, 4, 2, "#ffffff"],
+                      ["rect", 254, 62, 14, 3, "#b0b0c0"],
+                      ["rect", 259, 59, 3, 9, "#9090a0"],
+                      ["rect", 254, 60, 2, 2, "#9090a0"],
+                      ["circle", 263, 61, 2, "#f0a040"],
+                      ["pix", 262, 58, "#f0a040"],
+                      ["pix", 265, 58, "#f0a040"],
+                      ["pix", 263, 61, "#000000"]
                     ],
-                    [["rect", 252, 54, 20, 18, "#200818"], ["ellipse", 262, 63, 6, 3, "#e02040"], ["line", 257, 63, 267, 63, "#600818"], ["pix", 259, 61, "#ff8098"]]
+                    [
+                      ["rect", 252, 54, 20, 18, "#60a0e0"],
+                      ["rect", 253, 57, 5, 2, "#ffffff"],
+                      ["rect", 266, 68, 4, 2, "#ffffff"],
+                      ["rect", 256, 63, 14, 3, "#b0b0c0"],
+                      ["rect", 261, 60, 3, 9, "#9090a0"],
+                      ["rect", 256, 61, 2, 2, "#9090a0"],
+                      ["circle", 265, 62, 2, "#f0a040"],
+                      ["pix", 264, 59, "#f0a040"],
+                      ["pix", 267, 59, "#f0a040"],
+                      ["pix", 265, 62, "#000000"]
+                    ],
+                    [
+                      ["rect", 252, 54, 20, 18, "#60a0e0"],
+                      ["rect", 256, 57, 5, 2, "#ffffff"],
+                      ["rect", 262, 68, 4, 2, "#ffffff"],
+                      ["rect", 254, 62, 14, 3, "#b0b0c0"],
+                      ["rect", 259, 59, 3, 9, "#9090a0"],
+                      ["rect", 254, 60, 2, 2, "#9090a0"],
+                      ["circle", 263, 61, 2, "#f0a040"],
+                      ["pix", 262, 58, "#f0a040"],
+                      ["pix", 265, 58, "#f0a040"],
+                      ["pix", 263, 61, "#000000"]
+                    ],
+                    [
+                      ["rect", 252, 54, 20, 18, "#30b0b0"],
+                      ["circle", 262, 58, 2, "#e0b090"],
+                      ["rect", 260, 56, 5, 1, "#ff3080"],
+                      ["rect", 261, 61, 3, 5, "#ff60a0"],
+                      ["line", 261, 62, 256, 57, "#e0b090"],
+                      ["line", 263, 62, 268, 57, "#e0b090"],
+                      ["line", 261, 66, 258, 71, "#ffe040"],
+                      ["line", 263, 66, 266, 71, "#ffe040"]
+                    ],
+                    [
+                      ["rect", 252, 54, 20, 18, "#30b0b0"],
+                      ["circle", 262, 60, 2, "#e0b090"],
+                      ["rect", 260, 58, 5, 1, "#ff3080"],
+                      ["rect", 261, 63, 3, 4, "#ff60a0"],
+                      ["line", 261, 64, 256, 66, "#e0b090"],
+                      ["line", 263, 64, 268, 66, "#e0b090"],
+                      ["line", 261, 67, 257, 71, "#ffe040"],
+                      ["line", 263, 67, 267, 71, "#ffe040"]
+                    ],
+                    [
+                      ["rect", 252, 54, 20, 18, "#30b0b0"],
+                      ["circle", 262, 58, 2, "#e0b090"],
+                      ["rect", 260, 56, 5, 1, "#ff3080"],
+                      ["rect", 261, 61, 3, 5, "#ff60a0"],
+                      ["line", 261, 62, 256, 57, "#e0b090"],
+                      ["line", 263, 62, 268, 57, "#e0b090"],
+                      ["line", 261, 66, 258, 71, "#ffe040"],
+                      ["line", 263, 66, 266, 71, "#ffe040"]
+                    ],
+                    [
+                      ["rect", 252, 54, 20, 18, "#30b0b0"],
+                      ["circle", 262, 60, 2, "#e0b090"],
+                      ["rect", 260, 58, 5, 1, "#ff3080"],
+                      ["rect", 261, 63, 3, 4, "#ff60a0"],
+                      ["line", 261, 64, 256, 66, "#e0b090"],
+                      ["line", 263, 64, 268, 66, "#e0b090"],
+                      ["line", 261, 67, 257, 71, "#ffe040"],
+                      ["line", 263, 67, 267, 71, "#ffe040"]
+                    ]
                   ]
                 ],
                 ["roll", 252, 54, 20, 18],
@@ -2803,7 +2894,7 @@
                 ["pix", 271, 54, "#2a2a2a"],
                 ["pix", 252, 71, "#2a2a2a"],
                 ["pix", 271, 71, "#2a2a2a"],
-                ["glow", 240, 86, 54, 22, "255,120,190", 0.07, 0.03, 20]
+                ["glow", 240, 86, 54, 22, "160,220,255", 0.07, 0.03, 20]
               ]
             }
           },
@@ -2813,7 +2904,7 @@
               "then": "Una tele de tubo. Pesa como una nevera.",
               "else": {
                 "if": "state:tele=canal",
-                "then": "Imágenes muy raras. Esto no es apto para menores de 18... años de antigüedad.",
+                "then": "Imágenes muy raras. Esto no lo emiten ni a las tres de la mañana.",
                 "else": "Emiten la carta de ajuste. Quizá si la USO pueda cambiar de canal."
               }
             },
@@ -2850,7 +2941,7 @@
                   {"sound": "tv_canal", "at": "tele"},
                   {"state": ["tele", "canal"]},
                   {"wait": 1.5},
-                  "¿Una cama que bota? ¿Corazones? ¿Un saxofón?",
+                  "¿Un extraterrestre cocinero? ¿Un gato piloto? ¿Aeróbic con calentadores?",
                   "Juraría que esto suena igual que el piso de arriba...",
                   {"score": ["tele", 15]}
                 ]
@@ -3362,7 +3453,7 @@
         "cocina": {"x": 32, "y": 110, "face": "right"},
         "escalera": {"x": 344, "y": 106, "face": "left"}
       },
-      "onEnter": [{"once": "hall_primera", "do": ["El vestíbulo. Y ahí está la puerta principal... cerrada.", "¿Y esas risitas que vienen de arriba?"]}],
+      "onEnter": [{"once": "hall_primera", "do": ["El vestíbulo. Y ahí está la puerta principal... cerrada.", "¿Y esa música y ese jaleo que vienen de arriba?"]}],
       "background": [
         ["wallpaper", 0, 6, 400, 56, "#1e3a2a", "#24442f", "#8a7a3a"],
         ["repeat", 10, 40, 0, [["use", "moldura", 0, 0], ["use", "arrimadero", 0, 0]]],
@@ -3529,14 +3620,14 @@
                 "¡Y he ganado la apuesta!",
                 {"face": "right"},
                 {"wait": 0.6},
-                "...¿Esos corazones salen de las ventanas de arriba?",
+                "...¿Esas notas musicales salen de las ventanas de arriba?",
                 {"sound": "petardo"},
                 {"wait": 0.4},
                 {"sound": "petardo"},
-                "Bueno. Ellos también se lo están pasando bien.",
+                "Bueno. Parece que la gala está siendo un éxito.",
                 {"wait": 0.8},
                 {
-                  "end": "¡Tito escapó de la mansión del doctor Chiflado y ganó la apuesta! Arriba nadie se enteró: estaban muy ocupados."
+                  "end": "¡Tito escapó de la mansión del doctor Chiflado y ganó la apuesta! Arriba nadie se enteró: estaban en plena gala."
                 }
               ]
             },
@@ -3694,7 +3785,7 @@
       "onEnter": [
         {
           "once": "pasillo_primera",
-          "do": ["La planta de arriba...", "¿Esos ruidos son... muelles de cama? ¿Risitas? ¿Un acordeón?", "Mejor no hago preguntas."]
+          "do": ["La planta de arriba...", "¿Esos ruidos son... muelles? ¿Un platillo volante? ¿Un acordeón?", "Esta familia es muy rara."]
         }
       ],
       "background": [
@@ -3792,14 +3883,14 @@
           ],
           "states": {
             "ruido": {
-              "sound": {"name": ["muelles", "risitas", "suspiro"], "every": [1.6, 3.2], "first": 0.6},
-              "draw": [["glow", 72, 90, 30, 3, "255,90,170", 0.5, 0.25, 7], ["light", 87, 92, 22, "255,80,160", 0.35, 0.3]]
+              "sound": {"name": ["muelles", "hup", "muelles"], "every": [1.6, 3.2], "first": 0.6},
+              "draw": [["glow", 72, 90, 30, 3, "255,200,90", 0.5, 0.25, 7], ["light", 87, 92, 22, "255,190,80", 0.35, 0.3]]
             },
             "silencio": {"draw": []}
           },
           "verbs": {
-            "MIRAR": "Habitación 1. Cuelga un cartel: NO MOLESTAR. Se oyen muelles de cama... y risitas.",
-            "ABRIR": "Está cerrada por dentro. Y casi mejor no saber qué pasa ahí.",
+            "MIRAR": "Habitación 1. Cuelga un cartel: NO MOLESTAR, ENSAYO. Se oyen muelles y alguien que cuenta: ¡y uno, y dos!",
+            "ABRIR": "Está cerrada por dentro. ¿Qué estarán tramando ahí?",
             "EMPUJAR": "Está cerrada por dentro.",
             "HABLAR": ["¿Hola? ¿Hay alguien?", "No me oyen. Tendré que GOLPEAR la puerta."],
             "GOLPEAR": {"run": "golpear_1"}
@@ -3825,20 +3916,21 @@
             ["rect", 167, 62, 3, 3, "#e0c040"],
             ["rect", 152, 40, 10, 8, "#d8c090"],
             ["text", 154, 41, "2", "#5a3014"],
-            ["circle", 153, 44, 3, "#e02850"],
-            ["circle", 159, 44, 3, "#e02850"],
-            ["poly", [[150, 45], [162, 45], [156, 52]], "#e02850"]
+            ["circle", 153, 50, 3, "#e0c030"],
+            ["rect", 155, 40, 1, 10, "#e0c030"],
+            ["rect", 155, 40, 5, 2, "#e0c030"],
+            ["rect", 159, 42, 1, 2, "#e0c030"]
           ],
           "states": {
             "ruido": {
-              "sound": {"name": ["ooh", "risitas", "suspiro"], "every": [1.6, 3.2], "first": 0.6},
-              "draw": [["glow", 142, 90, 30, 3, "255,90,170", 0.5, 0.25, 7], ["light", 157, 92, 22, "255,80,160", 0.35, 0.3]]
+              "sound": {"name": ["ooh", "risitas", "ooh"], "every": [1.6, 3.2], "first": 0.6},
+              "draw": [["glow", 142, 90, 30, 3, "255,200,90", 0.5, 0.25, 7], ["light", 157, 92, 22, "255,190,80", 0.35, 0.3]]
             },
             "silencio": {"draw": []}
           },
           "verbs": {
-            "MIRAR": "Habitación 2. Tiene un corazón pintado. Se oyen suspiros... y besos a un espejo.",
-            "ABRIR": "Está cerrada por dentro. Y casi mejor no saber qué pasa ahí.",
+            "MIRAR": "Habitación 2. Tiene una nota musical pintada. Se oye un «uuuuuh», como de película de marcianos.",
+            "ABRIR": "Está cerrada por dentro. ¿Qué estarán tramando ahí?",
             "EMPUJAR": "Está cerrada por dentro.",
             "HABLAR": ["¿Hola? ¿Hay alguien?", "No me oyen. Tendré que GOLPEAR la puerta."],
             "GOLPEAR": {"run": "golpear_2"}
@@ -3870,13 +3962,13 @@
           "states": {
             "ruido": {
               "sound": {"name": ["acordeon", "risitas"], "every": [1.6, 3.2], "first": 0.6},
-              "draw": [["glow", 212, 90, 30, 3, "255,90,170", 0.5, 0.25, 7], ["light", 227, 92, 22, "255,80,160", 0.35, 0.3]]
+              "draw": [["glow", 212, 90, 30, 3, "255,200,90", 0.5, 0.25, 7], ["light", 227, 92, 22, "255,190,80", 0.35, 0.3]]
             },
             "silencio": {"draw": []}
           },
           "verbs": {
             "MIRAR": "Habitación 3. Suena un acordeón. ¿Están bailando un tango?",
-            "ABRIR": "Está cerrada por dentro. Y casi mejor no saber qué pasa ahí.",
+            "ABRIR": "Está cerrada por dentro. ¿Qué estarán tramando ahí?",
             "EMPUJAR": "Está cerrada por dentro.",
             "HABLAR": ["¿Hola? ¿Hay alguien?", "No me oyen. Tendré que GOLPEAR la puerta."],
             "GOLPEAR": {"run": "golpear_3"}
@@ -3919,7 +4011,10 @@
           "box": [288, 56, 20, 34],
           "walkTo": [298, 104],
           "face": "back",
-          "verbs": {"MIRAR": "Rosas rojas. Muy románticas. Muy sospechosas.", "COGER": "No son para mí. Y pinchan."}
+          "verbs": {
+            "MIRAR": "Rosas rojas de plástico. En esta casa todas las plantas son de mentira.",
+            "COGER": "No son para mí. Y pinchan."
+          }
         },
         {
           "id": "balaustrada",
@@ -4078,13 +4173,16 @@
           "walkTo": [272, 105],
           "face": "back",
           "draw": [
-            ["rect", 264, 51, 7, 16, "#a01818"],
-            ["rect", 264, 51, 1, 16, "#d04040"],
-            ["rect", 270, 51, 1, 16, "#600808"],
-            ["rect", 264, 53, 7, 1, "#f0d060"],
-            ["rect", 264, 64, 7, 1, "#f0d060"],
-            ["rect", 266, 56, 3, 5, "#f0d060"],
-            ["pix", 267, 58, "#a01818"],
+            ["rect", 263, 51, 10, 19, "#1a0c04"],
+            ["rect", 264, 52, 8, 18, "#a01818"],
+            ["rect", 264, 52, 1, 18, "#d04040"],
+            ["rect", 271, 52, 1, 18, "#600808"],
+            ["rect", 264, 69, 8, 1, "#500606"],
+            ["rect", 264, 54, 8, 1, "#f0d060"],
+            ["rect", 264, 66, 8, 1, "#f0d060"],
+            ["rect", 266, 57, 4, 5, "#f0d060"],
+            ["pix", 267, 59, "#a01818"],
+            ["pix", 268, 59, "#a01818"],
             [
               "if",
               "codigo_z3 && !silbato_cogido",
@@ -4101,7 +4199,7 @@
                     []
                   ]
                 ],
-                ["light", 267, 59, 14, "255,220,120", 0.18, 0.2]
+                ["light", 268, 60, 14, "255,220,120", 0.18, 0.2]
               ]
             ]
           ],
@@ -4137,7 +4235,7 @@
           ],
           "verbs": {
             "MIRAR": ["Una estantería con ruedas. Sección: POESÍA.", {"once": "pista_empujar", "do": "Si me pongo a un lado, puedo EMPUJARLA hacia el otro."}],
-            "LEER": [{"sound": "pagina", "at": "est_poesia"}, "«Poemas de amor para mayordomos». Ejem."],
+            "LEER": [{"sound": "pagina", "at": "est_poesia"}, "«Poemas para mayordomos». Todo rima con «bandeja»."],
             "EMPUJAR": {
               "push": "est_poesia",
               "ok": [],
@@ -4277,7 +4375,7 @@
         },
         {
           "id": "est_romantica",
-          "name": "ESTANTERÍA (NOVELA ROMÁNTICA)",
+          "name": "ESTANTERÍA (AVENTURAS)",
           "cell": [9, 2],
           "pushable": true,
           "box": [-14, -30, 28, 31],
@@ -4296,8 +4394,8 @@
             ["circle", 9, -2, 1, "#2a2a2a"]
           ],
           "verbs": {
-            "MIRAR": ["Una estantería con ruedas. Sección: NOVELA ROMÁNTICA.", {"once": "pista_empujar", "do": "Si me pongo a un lado, puedo EMPUJARLA hacia el otro."}],
-            "LEER": [{"sound": "pagina", "at": "est_romantica"}, "«Pasión en el piso de arriba». Eso explica muchas cosas."],
+            "MIRAR": ["Una estantería con ruedas. Sección: AVENTURAS.", {"once": "pista_empujar", "do": "Si me pongo a un lado, puedo EMPUJARLA hacia el otro."}],
+            "LEER": [{"sound": "pagina", "at": "est_romantica"}, "«Perdido en el piso de arriba». Eso explica muchas cosas."],
             "EMPUJAR": {
               "push": "est_romantica",
               "ok": [],
