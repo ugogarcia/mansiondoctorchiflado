@@ -1,4 +1,46 @@
+# La mansión del doctor Chiflado
+
+Una mini aventura gráfica al estilo de las de los años 80 (Maniac Mansion, Monkey Island…), **hecha íntegramente por IA** (Claude, de Anthropic) a partir de las ideas de **Ugo García**.
+
+Todo el juego está en un solo archivo HTML: gráficos pixel art dibujados por código, música chiptune y efectos sintetizados en el navegador, sin imágenes ni sonidos externos.
+
+## Cómo jugar
+
+1. Descarga `aventura.html` y ábrelo en el navegador (doble clic). No hace falta instalar nada.
+2. Haz clic en la portada para activar el sonido y empezar.
+3. Elige un verbo abajo y luego haz clic en un objeto o personaje.
+   - Clic en el suelo: andar. Doble clic: llegar al instante.
+   - Clic derecho: MIRAR.
+   - **ESC**: saltar escenas. **M**: silenciar.
+
+Tito ha apostado diez euros a que en la mansión no hay fantasmas… y la puerta se ha cerrado a su espalda. Encuentra la salida, conoce a Paco el cocinero, a Firulais y a los ensayos de la gala del piso de arriba, y consigue todos los puntos de disparate que puedas.
+
+## Archivos del repositorio
+
+| Archivo | Qué es |
+|---|---|
+| `aventura.html` | El juego completo, listo para jugar (motor + aventura integrada). |
+| `aventura.json` | La aventura en formato JSON: habitaciones, objetos, diálogos, música… |
+| `motor.html` | El motor del juego sin aventura (plantilla con el hueco `/*GAME_JSON*/`). |
+| `gen.py`, `audio.py`, `story2.py` … `story6.py` | Scripts de Python que generan `aventura.json` por capas. |
+| `aventura_v1.json` | Base de partida que usa `gen.py`. |
+| `sokoban.py`, `search.py` | Utilidades para comprobar que el puzle de las estanterías tiene solución. |
+| `fmt.py`, `build.py` | Formateo del JSON e inserción en `motor.html` para crear `aventura.html`. |
+| `README.md` | Esta guía. |
+
+### Regenerar el juego
+
+```bash
+python3 gen.py && python3 audio.py && python3 story2.py && python3 story3.py \
+  && python3 story4.py && python3 story5.py && python3 story6.py && python3 build.py
+```
+
+(`gen.py` parte de `aventura_v1.json`.)
+
+---
+
 # Guía para crear aventuras en JSON
+
 
 `aventura.html` es el motor. El juego completo (habitaciones, dibujos, objetos, verbos, puzzles e historia) está en un JSON.
 
@@ -559,4 +601,4 @@ Tipos de entrada:
 
 ## Versión (`version`)
 
-`"version": "v0.15"` en la raíz del JSON se muestra en pequeño en la esquina inferior derecha de la portada y de las escenas. Sirve para saber si estás viendo la última versión. En esta aventura se cambia en `story6.py` (constante `VERSION`).
+`"version": "v0.15"` en la raíz del JSON se muestra en pequeño en la esquina inferior derecha de la portada y de las escenas. Sirve para saber si estás viendo la última versión. En esta aventura se cambia en `story6.py` (constante `VERSION`) y sube en 1 con cada iteración.
